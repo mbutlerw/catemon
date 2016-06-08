@@ -1,7 +1,12 @@
-feature 'View hit Points' do
-  scenario 'See player 2 hitpoints' do
-    sign_in_and_play
-    expect(page).to have_content "Matt: 60HP"
+
+feature 'View hit points' do
+  scenario 'see Player 2 hit points' do
+      sign_in_and_play
+    expect(page).to have_content 'Marco: 60HP'
   end
 
+  scenario 'see Player 1 hit points' do
+    sign_in_and_play
+    expect(page).to have_content 'Matt: 60HP'
+  end
 end
