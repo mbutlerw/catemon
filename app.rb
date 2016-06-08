@@ -3,6 +3,7 @@ require_relative './lib/player'
 class Catemon < Sinatra::Base
 
   enable :sessions
+  
 
   get '/' do
     erb :index
