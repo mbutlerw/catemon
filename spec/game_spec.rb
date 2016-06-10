@@ -3,10 +3,12 @@ require 'game'
 describe Game do
 
   subject(:game) { described_class.new(player1,player2) }
-  let(:player1) { double :player, name: "Aquarious" }
-  let(:player2) { double :player, name: "Pisces" }
+  let(:player1) { double :player, name: "Aquarious", hit_points: 100}
+  let(:player2) { double :player, name: "Pisces", hit_points: 100 }
+  let(:dead_player) {double :player, name: "Pisces", hit_points: 0}
+  subject(:finished_game) {described_class.new(player1, dead_player)}
 
-  describe '#attack' do    
+  describe '#attack' do
     it 'attacks player 2' do
       expect(player2).to receive( :receive_attack )
       game.attack(player2)
@@ -38,4 +40,15 @@ describe Game do
     end
   end
 
+  describe '#winner' do
+    it 'displays name of winner' do
+      expect(finished_game.winner).to eq "Aquarious"
+    end
+  end
+
+  describe '#game_over?' do
+    it 'returns true if any player is at or below 0 hp' do
+      expect(finished_game.game_over?).to eq true
+    end
+  end
 end

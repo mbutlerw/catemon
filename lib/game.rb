@@ -42,4 +42,14 @@ class Game
     end
   end
 
+  def winner
+    @players.select{|player| player.hit_points <= 0}
+  end
+
+  def game_over?
+    @players.any?{|player| player.hit_points <= 0}
+  end
+  private
+
+
 end
