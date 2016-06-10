@@ -1,7 +1,13 @@
 
+
 def sign_in_and_play
   visit('/')
-  fill_in :player_1_name, with: 'Matt'
-  fill_in :player_2_name, with: 'Marco'
-  click_button 'Submit'
+  fill_in("multi-player_1", with: "Steve")
+  fill_in("multi-player_2", with: "Carlos")
+  click_button("submit")
+end
+
+def attack_and_confirm
+  click_button "Attack"
+  click_button "OK"
 end

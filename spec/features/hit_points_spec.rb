@@ -1,12 +1,27 @@
+require 'spec_helper'
 
-feature 'View hit points' do
-  scenario 'see Player 2 hit points' do
-      sign_in_and_play
-    expect(page).to have_content 'Marco: 60HP'
-  end
-
-  scenario 'see Player 1 hit points' do
+describe 'hit points' do
+  it 'displays player_2s hit points' do
     sign_in_and_play
-    expect(page).to have_content 'Matt: 60HP'
+    expect(page).to have_content("Carlos: 60HP")
   end
+
+  it 'displayers player_1s hit points' do
+    sign_in_and_play
+    expect(page).to have_content("Steve: 60HP")
+  end
+
+  it 'reduces player_2 points by random_damage_amount' do
+    sign_in_and_play
+    attack_and_confirm
+    expect(page).not_to have_content("Carlos: 60HP")
+  end
+
+  it 'reduces player_1 points by random_damage_amount' do
+    sign_in_and_play
+    2.times { attack_and_confirm }
+    expect(page).not_to have_content("Steve: 60HP")
+
+  end
+
 end

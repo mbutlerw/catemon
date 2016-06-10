@@ -1,15 +1,13 @@
-
-
-<h1>Battle!</h1>
-<h2>Sign in to play</h2>
+<h2>Multi-Player</h2>
 <form action="/names" method="post">
-  <label for="player_1_name">
-    Player 1 name
-    <input type="text" name="player_1_name">
-  </label>
-  <label for="player_1_name">
-    Player 2 name
-    <input type="text" name="player_2_name">
-  </label>
-  <input type="submit" value="Submit">
+  Player 1: <br><input type="text" name="player_1" id="multi-player_1"><br>
+  Player 2: <br><input type="text" name="player_2" id="multi-player_2"><br>
+  <input type="submit" name="submit" value="submit">
+</form>
+
+<h2>Single-Player</h2>
+<form action="/names" method="post">
+  Player 1:<br><input type="text" name="player_1" id="single-player"><br>
+  <input type="hidden" name="player_2" value="Computer">
+  <input type="submit" name="Single-Player" value="Single-Player">
 </form>
